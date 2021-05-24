@@ -1,5 +1,5 @@
 ## General info
-This project is a simple "SSYS Employee Manager" application to handle with employees data.
+This project is a simple "SSYS Employee Manager" application to handle with employees data. The repository contains a source folder "src", the main file is app.py. There is also a file to handle with the database called "db_functions.py".
 
 ## Table of contents
 * [General info](#general-info)
@@ -26,7 +26,7 @@ $ pip install -r requirements.txt
 That's a example of how to run the API:
 
 ```
-$ py SSYS_Employee_Manager.py
+$ py .\src\app.py
 
 ```
 
@@ -41,5 +41,7 @@ Terminal Output:
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 598-489-118
- * Running on http://localhost:5000/ (Press CTRL+C to quit)
+ * Running on http://localhost:80/ (Press CTRL+C to quit)
 ```
+
+To test the server you can find a file called "test.py" that can be user to get and post data by URL request.
