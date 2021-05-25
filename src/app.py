@@ -12,6 +12,21 @@ app.config["DEBUG"] = True
 app.config['JSON_SORT_KEYS'] = False
 app.secret_key = os.environ.get('SECRET_KEY','dev')
 
+
+
+schema = {
+    'type': 'object',
+    'properties': {
+        'id': {"type": "string","pattern": "^[1-9]\d*$"},
+        'name': {'type': 'string',"minLenght":1,"maxLenght":50},
+        'email': { "type": "string", "pattern": "^.+@ssys.com.br$"},
+        'department': {'type': 'string', "minLenght": 1, "maxLenght":50},
+        'salary': {"type": "string","pattern": "^\$?(([1-9]\d{0,2}(\d{3})*)|0)?\.\d{1,2}$"},
+        'birth_date': {'type': 'string', "pattern":"^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"}
+    },
+    'required': ['id', 'name', 'email', 'department','salary','birth_date']
+}
+
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
