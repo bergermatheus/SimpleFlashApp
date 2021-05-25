@@ -49,3 +49,47 @@ employee_array = [{
 "salary": "3000.00",
 "birth_date": "01-01-1977"},
 {
+"id": "3",
+"name": "Leia Organa",
+"email": "organa@ssys.com.br",
+"department": "DevOps",
+"salary": "5000.00",
+"birth_date": "01-01-1980"}]
+
+for mydata in employee_array:
+    r = requests.post(url = URL + 'employees/', headers = {"Authorization":"Bearer " + token} , json = mydata)
+
+    response  = r.text
+    print(response)
+print()
+
+## employee ID to get specific details
+employee_ID = '1'
+
+r = requests.get(url = URL + 'employees/' + employee_ID , headers = {"Authorization":"Bearer " + token})
+
+data  = r.json()
+print('Employee ID' + employee_ID + 'details:')
+print(data)
+print()
+
+
+## get employees salary report
+
+
+r = requests.get(url = URL + 'reports/employees/salary/', headers = {"Authorization":"Bearer " + token} )
+
+data  = r.json()
+print('Employee Salary report:')
+print(data)
+print()
+
+## get employees age report
+
+
+r = requests.get(url = URL + 'reports/employees/age/', headers = {"Authorization":"Bearer " + token} )
+
+data  = r.json()
+print('Employee Age report:')
+print(data)
+print()
