@@ -116,3 +116,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+docker_image_build_push.bat
