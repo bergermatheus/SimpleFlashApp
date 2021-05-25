@@ -47,6 +47,23 @@ def login():
         return jsonify({'token' : token.decode('UTF-8')})
 
     return make_response('Could not verify!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
+
+
+@app.route('/employees/',methods =['GET', 'POST'])
+@token_required
+@expects_json(schema, ignore_for=['GET'])
+def employee_list():
+    if request.method == 'POST':
+        
+        employees_details = dict(request.json)
+        response = database.create(employees_details)
+        return response
+
+    else:
+        response = jsonify(database.show_employees_details())
+        response.headers.set('Content-Type', 'application/json')
+        return response
+
 if __name__ == "__main__":
 
     # Call database class and create dataset if doesn't exist
