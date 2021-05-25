@@ -102,6 +102,30 @@ def employee_details(ID):
         response.headers.set('Content-Type', 'application/json')
         return response
 
+
+@app.route('/reports/employees/salary/', methods = ['GET'] )
+@token_required
+def employee_salary_reports():
+
+    response = jsonify(database.salary_report())
+    response.headers.set('Content-Type', 'application/json')
+    return response
+
+
+@app.route('/reports/employees/age/', methods = ['GET'] )
+@token_required
+def employee_age_reports():
+
+    response = jsonify(database.age_report())
+    response.headers.set('Content-Type', 'application/json')
+    return response
+
+@app.route("/")
+def welcome():
+    return "Welcome"
+    
+
+
 if __name__ == "__main__":
 
     # Call database class and create dataset if doesn't exist
