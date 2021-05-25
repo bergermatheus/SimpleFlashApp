@@ -24,6 +24,8 @@ def login():
     return make_response('Could not verify!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
 if __name__ == "__main__":
 
+    # Call database class and create dataset if doesn't exist
+    database = Database()
 
     app.run(host='0.0.0.0', port=80)
 
