@@ -64,6 +64,29 @@ def employee_list():
         response.headers.set('Content-Type', 'application/json')
         return response
 
+
+
+@app.route('/employees/<ID>', methods = ['GET','PUT','DELETE'])
+@expects_json(schema, ignore_for=['GET','DELETE'])
+@token_required
+def employee_details(ID):
+    
+    if request.method == 'GET':
+        response = jsonify(database.show_employees_details(ID))
+        response.headers.set('Content-Type', 'application/json')
+        return response  
+
+    elif request.method == 'PUT':
+        employees_details = dict(request.json)
+        response = jsonify(database.update(employees_details, ID))
+        response.headers.set('Content-Type', 'application/json')
+        return response  
+    elif request.method == 'DELETE':
+
+        response = jsonify(database.delete(ID))
+        response.headers.set('Content-Type', 'application/json')
+        return response
+
 if __name__ == "__main__":
 
     # Call database class and create dataset if doesn't exist
