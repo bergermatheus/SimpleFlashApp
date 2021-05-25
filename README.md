@@ -14,16 +14,32 @@ Project is created with:
 * Python 3.9.2
 	
 ## Setup
+
+First setup a virtual environment to isolate the application. If you use Windows:
+
+```
+pip install virtualenv
+virtualenv virtual-ssys-challenge
+.\virtual-ssys-challenge\Scripts\activate
+```
+
+If you are using Linux, follow the commands bellow:
+
+```
+$ pip install virtualenv
+$ virtualenv virtual-ssys-challenge
+$ source virtual-ssys-challenge/bin/activate
+```
+
 To run this project, install the dependecies using pip:
 
 ```
-$ cd ../project_folder
 $ pip install -r requirements.txt
 
 ```
 
 ## Example
-That's a example of how to run the API:
+That's an example of how to run the API server:
 
 ```
 $ py .\src\app.py
@@ -44,4 +60,4 @@ Terminal Output:
  * Running on http://localhost:80/ (Press CTRL+C to quit)
 ```
 
-To test the server you can find a file called "test.py" that can be user to get and post data by URL request.
+To check the server you can run a file called "client_routine.py" that simulates the client requests.
