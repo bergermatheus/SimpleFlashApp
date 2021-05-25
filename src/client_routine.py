@@ -69,7 +69,7 @@ employee_ID = '1'
 r = requests.get(url = URL + 'employees/' + employee_ID , headers = {"Authorization":"Bearer " + token})
 
 data  = r.json()
-print('Employee ID' + employee_ID + 'details:')
+print('Employee ID ' + employee_ID + ' details:')
 print(data)
 print()
 
@@ -91,5 +91,32 @@ r = requests.get(url = URL + 'reports/employees/age/', headers = {"Authorization
 
 data  = r.json()
 print('Employee Age report:')
+print(data)
+print()
+
+
+
+## employee ID to update specific details
+employee_ID = '3'
+new_data = {
+"id": "3",
+"name": "Matheus Berger",
+"email": "berger@ssys.com.br",
+"department": "DevOps",
+"salary": "5000.00",
+"birth_date": "01-01-1995"
+}
+r = requests.put(url = URL + 'employees/' + employee_ID , headers = {"Authorization":"Bearer " + token}, json = new_data)
+
+data  = r.json()
+print('Employee ID ' + employee_ID + ' update:')
+print(data)
+print()
+
+## delete employee by ID 
+employee_ID = '3'
+r = requests.delete(url = URL + 'employees/' + employee_ID , headers = {"Authorization":"Bearer " + token})
+
+data  = r.json()
 print(data)
 print()
