@@ -12,6 +12,31 @@ app.config["DEBUG"] = True
 app.config['JSON_SORT_KEYS'] = False
 app.secret_key = os.environ.get('SECRET_KEY','dev')
 
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.headers.get('Authorization')
+        if token:
+            #bearer token
+            token = token.split(" ")[1]
+
+        if not token:
+            return jsonify({'message' : 'Token is missing!'}), 403
+
+        try: 
+            data = jwt.decode(token, app.config['SECRET_KEY'])
+        except:
+            return jsonify({'message' : 'Token is invalid!'}), 403
+
+        return f(*args, **kwargs)
+
+    return decorated
+
+
+@token_required
+def protected():
+    return jsonify({'message' : 'This is only available for people with valid tokens.'})
+
 @app.route('/login')
 def login():
     auth = request.authorization
