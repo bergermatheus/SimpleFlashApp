@@ -1,5 +1,5 @@
 ## General info
-This project is a simple "SSYS Employee Manager" application to handle with employees data. The repository contains a source folder "src", the main file is app.py. There is also a file to handle with the database called "db_functions.py".
+This project is a simple CRUD application in Flash to handle with employees data. The repository contains a source folder "src", the main file is app.py. There is also a file to handle with the database called "db_functions.py".
 
 ## Table of contents
 * [General info](#general-info)
